@@ -1,0 +1,187 @@
+<?xml version="1.0" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="mywaybot_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <link name="base_footprint" />
+    <link name="base_link">
+    <inertial>
+        <origin xyz="3.90859031350992E-06 -1.43747857999288E-05 0.0283269426003643" rpy="0 0 0" />
+        <mass value="0.381949527093752" />
+        <inertia ixx="0.00032319847460271" ixy="2.84211476580681E-08" ixz="-6.72511012706939E-10" iyy="0.000428449552348986" iyz="-1.87719666280047E-09" izz="0.000699559457801583" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/base_link.dae"  />
+        </geometry>
+        <material name="">
+            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/base_link.dae"  />
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="wheel1">
+    <inertial>
+        <origin xyz="1.4484226921678E-05 4.32344825935724E-06 -0.000617636516338824" rpy="0 0 0" />
+        <mass value="0.0387327457484795" />
+        <inertia ixx="4.1465678263431E-06" ixy="-1.35844695029128E-09" ixz="-1.58002756604318E-09" iyy="4.13875194213039E-06" iyz="2.5865178424999E-09" izz="6.17385454735011E-06" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/wheel1.dae"  />
+        </geometry>
+        <material name="">
+            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/wheel1.dae"  />
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="wheel2">
+    <inertial>
+        <origin xyz="1.4496870562708E-05 -5.44522442864209E-06 -0.000617737026949172" rpy="0 0 0" />
+        <mass value="0.0387304065622297" />
+        <inertia ixx="4.14532700096411E-06" ixy="4.76403497895517E-10" ixz="-1.60839818330556E-09" iyy="4.13775177397875E-06" iyz="3.79225629000141E-10" izz="6.17172391960293E-06" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/wheel2.dae"  />
+        </geometry>
+        <material name="">
+            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/wheel2.dae"  />
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="wheel3">
+    <inertial>
+        <origin xyz="1.44956043392347E-05 -5.44474922908531E-06 -0.000617736978191924" rpy="0 0 0" />
+        <mass value="0.0387304087940915" />
+        <inertia ixx="4.14532697333794E-06" ixy="4.76423405497374E-10" ixz="-1.60840818582899E-09" iyy="4.13775180658688E-06" iyz="3.79204521243615E-10" izz="6.17172387598903E-06" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/wheel4.dae"  />
+        </geometry>
+        <material name="">
+            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/wheel4.dae"  />
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="wheel4">
+    <inertial>
+        <origin xyz="1.44842268511025E-05 4.32344964706663E-06 -0.000617636518388434" rpy="0 0 0" />
+        <mass value="0.038732745750615" />
+        <inertia ixx="4.14656782656897E-06" ixy="-1.35844790684118E-09" ixz="-1.58002781056493E-09" iyy="4.138751943565E-06" iyz="2.58651849007438E-09" izz="6.17385454876144E-06" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/wheel3.dae"  />
+        </geometry>
+        <material name="">
+            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/wheel3.dae"  />
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="base_scan">
+    <inertial>
+        <origin xyz="-0.000493641509390248 -0.000100196551340589 -0.0272853602027217" rpy="0 0 0" />
+        <mass value="0.0319595829444156" />
+        <inertia ixx="1.08378674966698E-05" ixy="-2.43572533657272E-09" ixz="1.61414334372884E-08" iyy="1.07813623896383E-05" iyz="-4.20751610607636E-09" izz="1.96313888344206E-05" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/laser.dae"  />
+        </geometry>
+        <material name="">
+            <color rgba="0.4 0.4 0.4 1" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/laser.dae"  />
+        </geometry>
+    </collision>
+    </link>
+    <!-- JOINT-->
+    <joint name="scan_joint" type="fixed">
+        <origin xyz="0.0405788546534533 0 0.0982633999999999" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="base_scan" />
+        <axis xyz="0 0 0" />
+    </joint>
+     <joint name="base_joint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0 0 0.010" rpy="0 0 0" />
+    </joint>
+    <joint name="wheel1_joint" type="continuous">
+        <origin xyz="0.0559999999999999 -0.0979500000000001 0.0234999999999999" rpy="1.5707963267949 0 0" />
+        <parent link="base_link" />
+        <child link="wheel1" />
+        <axis xyz="0 0.00147859271178934 0.999998906881199" />
+    </joint>
+    <joint name="wheel2_joint" type="continuous">
+        <origin xyz="0.0559999999999996 0.09795 0.0235000000000003" rpy="1.57227492004545 0 3.14159265358979" />
+        <parent link="base_link" />
+        <child link="wheel2" />
+        <axis xyz="0 0.00147859271178912 0.999998906881199" />
+    </joint>
+     <joint name="wheel3_joint" type="continuous">
+        <origin xyz="-0.056 0.09795 0.0235" rpy="1.5723 0 3.1416" />
+        <parent link="base_link" />
+        <child link="wheel3" />
+        <axis xyz="0 0.0014786 1" />
+    </joint>
+     <joint name="wheel4_joint" type="continuous">
+        <origin xyz="-0.056 -0.09795 0.0235" rpy="1.5708 0 0" />
+        <parent link="base_link" />
+        <child link="wheel4" />
+        <axis xyz="0 0.0014786 1" />
+    </joint>
+
+    <!-- xacro macro-->
+    <xacro:include filename="$(find mywaybot_gazebo)/urdf/lidar.xacro" />
+    <xacro:include filename="$(find mywaybot_gazebo)/urdf/move.xacro" />
+
+
+</robot>
