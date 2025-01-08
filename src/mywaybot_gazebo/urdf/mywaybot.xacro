@@ -127,7 +127,7 @@
         <inertia ixx="1.08378674966698E-05" ixy="-2.43572533657272E-09" ixz="1.61414334372884E-08" iyy="1.07813623896383E-05" iyz="-4.20751610607636E-09" izz="1.96313888344206E-05" />
     </inertial>
     <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0.0115" rpy="0 0 0" />
         <geometry>
             <mesh filename="file://$(find mywaybot_gazebo)/models/dae/laser.dae"  />
         </geometry>
@@ -136,23 +136,23 @@
         </material>
     </visual>
     <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0.0115" rpy="0 0 0" />
         <geometry>
             <mesh filename="file://$(find mywaybot_gazebo)/models/dae/laser.dae"  />
         </geometry>
     </collision>
     </link>
     <!-- JOINT-->
-    <joint name="scan_joint" type="fixed">
-        <origin xyz="0.0405788546534533 0 0.0982633999999999" rpy="0 0 0" />
-        <parent link="base_link" />
-        <child link="base_scan" />
-        <axis xyz="0 0 0" />
-    </joint>
-     <joint name="base_joint" type="fixed">
+    <joint name="base_joint" type="fixed">
         <parent link="base_footprint" />
         <child link="base_link" />
         <origin xyz="0 0 0.010" rpy="0 0 0" />
+    </joint>
+    <joint name="scan_joint" type="fixed">
+        <origin xyz="0.0405788546534533 0 0.08676339999" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="base_scan" />
+        <axis xyz="0 0 0" />
     </joint>
     <joint name="wheel1_joint" type="continuous">
         <origin xyz="0.0559999999999999 -0.0979500000000001 0.0234999999999999" rpy="1.5707963267949 0 0" />

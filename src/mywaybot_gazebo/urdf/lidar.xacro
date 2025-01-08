@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+<xacro:property name="M_PI" value="3.1415926535897931" />
 <gazebo reference="base_scan">
   <material>Gazebo/Red</material>
   <sensor name="laser" type="ray">
@@ -10,13 +10,13 @@
       <ray>
           <scan>
               <horizontal>
-                  <samples>4</samples>
-                  <min_angle>-3.14</min_angle>
-                  <max_angle>3.14</max_angle>
+                <samples>500</samples>
+                <min_angle>-1.57</min_angle>
+                <max_angle>1.57</max_angle>
               </horizontal>
           </scan>
           <range>
-              <min>0.3</min>
+              <min>0.05</min>
               <max>12</max>
           </range>
       </ray>
