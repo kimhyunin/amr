@@ -40,7 +40,7 @@ def generate_launch_description():
             ])
         ]),
         launch_arguments={
-            'pause': 'true'
+            'pause': 'false'
         }.items()
     )
 
@@ -64,12 +64,12 @@ def generate_launch_description():
         output='screen'
     )
 
-    launchDescription = LaunchDescription()
-    launchDescription.add_action(robot_state_publisher_node)
-    launchDescription.add_action(joint_state_publisher_node)
-    launchDescription.add_action(gazebo_server)
-    launchDescription.add_action(gazebo_client)
-    launchDescription.add_action(urdf_spawn_node)
+    ld = LaunchDescription()
+    ld.add_action(robot_state_publisher_node)
+    ld.add_action(joint_state_publisher_node)
+    ld.add_action(gazebo_server)
+    ld.add_action(gazebo_client)
+    ld.add_action(urdf_spawn_node)
 
     
-    return launchDescription
+    return ld
