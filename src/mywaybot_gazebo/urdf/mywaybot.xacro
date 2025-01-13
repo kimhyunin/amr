@@ -7,18 +7,23 @@
     <!-- xacro macro-->
     <xacro:include filename="$(find mywaybot_gazebo)/urdf/lidar.xacro" />
     <xacro:include filename="$(find mywaybot_gazebo)/urdf/omni_drive.urdf.xacro" />
+    <!-- wheel property -->
+    <xacro:property name="wheel_radius" value="0.0325" />
+    <xacro:property name="wheel_width" value="0.0304" />
+    <xacro:property name="wheel_mass" value="0.065" />
+    <xacro:property name="wheel_torque" value="20" />
 
     <link name="base_footprint" />
     <link name="base_link">
     <inertial>
-        <origin xyz="3.90859031350992E-06 -1.43747857999288E-05 0.0283269426003643" rpy="0 0 0" />
+        <origin xyz="-3.90859031350477E-06 1.43747857999353E-05 0.0283269426003643" rpy="0 0 0" />
         <mass value="0.381949527093752" />
-        <inertia ixx="0.00032319847460271" ixy="2.84211476580681E-08" ixz="-6.72511012706939E-10" iyy="0.000428449552348986" iyz="-1.87719666280047E-09" izz="0.000699559457801583" />
+        <inertia ixx="0.00032319847460271" ixy="0" ixz="0" iyy="0.000428449552348986" iyz="1.87719666280075E-09" izz="0.000699559457801583" />
     </inertial>
     <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/base_link.dae"  />
+            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/base_link.stl"  />
         </geometry>
         <material name="">
             <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -27,90 +32,144 @@
     <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/base_link.dae"  />
+            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/base_link.stl"  />
+        </geometry>
+    </collision>
+    </link>
+    <link name="wheel1">
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="${wheel_mass}" />
+        <inertia ixx="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" ixy="0" ixz="0"
+                 iyy="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" iyz="0"
+                 izz="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel1.stl"  />
+        </geometry>
+        <material name="">
+            <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
         </geometry>
     </collision>
     </link>
 
-    <link name="wheel1">
-    <inertial>
-        <origin xyz="1.4484226921678E-05 4.32344825935724E-06 -0.000617636516338824" rpy="0 0 0" />
-        <mass value="0.0387327457484795" />
-        <inertia ixx="4.1465678263431E-06" ixy="-1.35844695029128E-09" ixz="-1.58002756604318E-09" iyy="4.13875194213039E-06" iyz="2.5865178424999E-09" izz="6.17385454735011E-06" />
-    </inertial>
-    <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel.stl"  />
-        </geometry>
-        <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-        </material>
-    </visual>
-    <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel.stl"  />
-        </geometry>
-    </collision>
-    </link>
 
     <link name="wheel2">
     <inertial>
-        <origin xyz="1.4496870562708E-05 -5.44522442864209E-06 -0.000617737026949172" rpy="0 0 0" />
-        <mass value="0.0387304065622297" />
-        <inertia ixx="4.14532700096411E-06" ixy="4.76403497895517E-10" ixz="-1.60839818330556E-09" iyy="4.13775177397875E-06" iyz="3.79225629000141E-10" izz="6.17172391960293E-06" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="${wheel_mass}" />
+        <inertia ixx="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" ixy="0" ixz="0"
+                 iyy="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" iyz="0"
+                 izz="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" />
     </inertial>
     <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel.stl"  />
+            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel2.stl"  />
         </geometry>
         <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
         </material>
     </visual>
     <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel.stl"  />
+            <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
         </geometry>
     </collision>
     </link>
 
     <link name="wheel3">
     <inertial>
-        <origin xyz="1.44956043392347E-05 -5.44474922908531E-06 -0.000617736978191924" rpy="0 0 0" />
-        <mass value="0.0387304087940915" />
-        <inertia ixx="4.14532697333794E-06" ixy="4.76423405497374E-10" ixz="-1.60840818582899E-09" iyy="4.13775180658688E-06" iyz="3.79204521243615E-10" izz="6.17172387598903E-06" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="${wheel_mass}" />
+        <inertia ixx="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" ixy="0" ixz="0"
+                 iyy="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" iyz="0"
+                 izz="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" />
     </inertial>
     <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel.stl"  />
+            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel3.stl"  />
         </geometry>
         <material name="">
-            <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
         </material>
     </visual>
     <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel.stl"  />
+            <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
         </geometry>
     </collision>
     </link>
 
     <link name="wheel4">
     <inertial>
-        <origin xyz="1.44842268511025E-05 4.32344964706663E-06 -0.000617636518388434" rpy="0 0 0" />
-        <mass value="0.038732745750615" />
-        <inertia ixx="4.14656782656897E-06" ixy="-1.35844790684118E-09" ixz="-1.58002781056493E-09" iyy="4.138751943565E-06" iyz="2.58651849007438E-09" izz="6.17385454876144E-06" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="${wheel_mass}" />
+        <inertia ixx="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" ixy="0" ixz="0"
+                 iyy="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" iyz="0"
+                 izz="${(2/5) * wheel_mass * (wheel_radius * wheel_radius)}" />
     </inertial>
     <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel.stl"  />
+            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel4.stl"  />
+        </geometry>
+        <material name="">
+            <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="scan">
+    <inertial>
+        <origin xyz="8.52131440630677E-05 -9.55220519319054E-05 0.0140146397972782" rpy="0 0 0" />
+        <mass value="0.0319595829444156" />
+        <inertia ixx="1.08378674966698E-05" ixy="0" ixz="1.61414334372884E-08" iyy="1.07813623896383E-05" iyz="-4.20751610607626E-09" izz="1.96313888344206E-05" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="file://$(find mywaybot_gazebo)/models/stl/scan.stl"  />
+        </geometry>
+        <material name="">
+            <color rgba="0.4 0.4 0.4 1" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="file://$(find mywaybot_gazebo)/models/stl/scan.stl"  />
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="imu">
+    <inertial>
+        <origin xyz="-0.000154135778752049 0.00149999999999999 1.62622425316158E-05" rpy="0 0 0" />
+        <mass value="0.0141651382931337" />
+        <inertia ixx="3.69803461369615E-06" ixy="-2.08164299927343E-21" ixz="-8.07956969382042E-09" iyy="1.21554251693806E-05" iyz="-4.61454702115272E-22" izz="8.47863826312414E-06" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/imu.stl"  />
         </geometry>
         <material name="">
             <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -119,70 +178,70 @@
     <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/wheel.stl"  />
+            <mesh filename="file://$(find mywaybot_gazebo)/models/stl/imu.stl"  />
         </geometry>
     </collision>
     </link>
 
-    <link name="base_scan">
-    <inertial>
-        <origin xyz="-0.000493641509390248 -0.000100196551340589 -0.0272853602027217" rpy="0 0 0" />
-        <mass value="0.0319595829444156" />
-        <inertia ixx="1.08378674966698E-05" ixy="-2.43572533657272E-09" ixz="1.61414334372884E-08" iyy="1.07813623896383E-05" iyz="-4.20751610607636E-09" izz="1.96313888344206E-05" />
-    </inertial>
-    <visual>
-        <origin xyz="0 0 0.0115" rpy="0 0 0" />
-        <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/laser.dae"  />
-        </geometry>
-        <material name="">
-            <color rgba="0.4 0.4 0.4 1" />
-        </material>
-    </visual>
-    <collision>
-        <origin xyz="0 0 0.0115" rpy="0 0 0" />
-        <geometry>
-            <mesh filename="file://$(find mywaybot_gazebo)/models/dae/laser.dae"  />
-        </geometry>
-    </collision>
-    </link>
     <!-- JOINT-->
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint" />
         <child link="base_link" />
-        <origin xyz="0 0 0.010" rpy="0 0 0" />
-    </joint>
-    <joint name="scan_joint" type="fixed">
-        <origin xyz="0.0405788546534533 0 0.08676339999" rpy="0 0 0" />
-        <parent link="base_link" />
-        <child link="base_scan" />
-        <axis xyz="0 0 0" />
+        <origin xyz="0 0 0.010" rpy="0 0 3.1416" />
     </joint>
     <joint name="wheel1_joint" type="continuous">
-        <origin xyz="0.056 -0.09795 0.0235" rpy="1.5723 0 0" />
+        <origin xyz="-0.056 0.09755 0.0235" rpy="1.5708 0.94526 3.1416" />
         <parent link="base_link" />
         <child link="wheel1" />
-        <axis xyz="0 0.00147859271178934 0.999998906881199" />
+        <axis xyz="-0.0011986 0.00086576 1" />
     </joint>
     <joint name="wheel2_joint" type="continuous">
-        <origin xyz="0.056 0.09795 0.0235" rpy="1.5723 0 3.1415" />
+        <origin xyz="-0.056 -0.09755 0.0235" rpy="1.5708 0.56949 0" />
         <parent link="base_link" />
         <child link="wheel2" />
-        <axis xyz="0 0.00147859271178912 0.999998906881199" />
+        <axis xyz="0 0 1" />
     </joint>
-     <joint name="wheel3_joint" type="continuous">
-        <origin xyz="-0.056 0.09795 0.0235" rpy="1.5723 0 3.1415" />
+    <joint name="wheel3_joint" type="continuous">
+        <origin xyz="0.056 0.09755 0.0235" rpy="-1.5708 1.1491 0" />
         <parent link="base_link" />
         <child link="wheel3" />
-        <axis xyz="0 0.0014786 1" />
+        <axis xyz="-0.0013491 -0.00060515 1" />
     </joint>
-     <joint name="wheel4_joint" type="continuous">
-        <origin xyz="-0.056 -0.09795 0.0235" rpy="1.5708 0 0" />
+    <joint name="wheel4_joint" type="continuous">
+        <origin xyz="0.056 -0.09755 0.0235" rpy="1.5708 1.5249 0" />
         <parent link="base_link" />
         <child link="wheel4" />
-        <axis xyz="0 0.0014786 1" />
+        <axis xyz="0 0 1" />
+    </joint>
+    <joint name="scan_joint" type="fixed">
+        <origin xyz="-0.04 0 0.056963" rpy="0 0 3.1416" />
+        <parent link="base_link" />
+        <child link="scan" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <joint name="imu_joint" type="fixed">
+        <origin xyz="0.0499999999999996 -0.00999999999999986 0.0622634" rpy="1.5707963267949 0 1.5707963267949" />
+        <parent link="base_link" />
+        <child link="imu" />
+        <axis xyz="0 0 0" />
     </joint>
 
-
+    <!-- mu1 mu2-->
+    <gazebo reference="wheel1">
+        <mu1>0.01</mu1>
+        <mu2>0.01</mu2>
+    </gazebo>
+    <gazebo reference="wheel2">
+        <mu1>0.01</mu1>
+        <mu2>0.01</mu2>
+    </gazebo>
+    <gazebo reference="wheel3">
+        <mu1>0.01</mu1>
+        <mu2>0.01</mu2>
+    </gazebo>
+    <gazebo reference="wheel4">
+        <mu1>0.01</mu1>
+        <mu2>0.01</mu2>
+    </gazebo>
 
 </robot>
