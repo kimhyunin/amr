@@ -7,12 +7,15 @@ from launch.substitutions import PathJoinSubstitution
 import os
 import xacro
 from ament_index_python.packages import get_package_share_directory
+from launch.substitutions import LaunchConfiguration
 
 
 def generate_launch_description():
     share_dir = get_package_share_directory('mywaybot_gazebo')
 
     xacro_file = os.path.join(share_dir, 'urdf', 'mywaybot.xacro')
+    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+
     robot_description_config = xacro.process_file(xacro_file)
     robot_urdf = robot_description_config.toxml()
     robot_spawn_position = [0,0,0] # x y z
@@ -28,14 +31,16 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         parameters=[
-            {'robot_description': robot_urdf}
+            {'robot_description': robot_urdf,
+             'use_sim_time' : use_sim_time}
         ],
     )
 
     joint_state_publisher_node = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
-        name='joint_state_publisher'
+        name='joint_state_publisher',
+        parameters=[{'use_sim_time' : use_sim_time}]
     )
 
     gazebo_server = IncludeLaunchDescription(
