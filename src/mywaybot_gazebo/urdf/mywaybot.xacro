@@ -137,14 +137,14 @@
     </collision>
     </link>
 
-    <link name="scan">
+    <link name="lidar_link">
     <inertial>
         <origin xyz="8.52131440630677E-05 -9.55220519319054E-05 0.0140146397972782" rpy="0 0 0" />
         <mass value="0.0319595829444156" />
         <inertia ixx="1.08378674966698E-05" ixy="0" ixz="1.61414334372884E-08" iyy="1.07813623896383E-05" iyz="-4.20751610607626E-09" izz="1.96313888344206E-05" />
     </inertial>
     <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 -0.0298" rpy="0 0 0" />
         <geometry>
           <mesh filename="file://$(find mywaybot_gazebo)/models/stl/scan.stl"  />
         </geometry>
@@ -153,7 +153,7 @@
         </material>
     </visual>
     <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 -0.0298" rpy="0 0 0" />
         <geometry>
           <mesh filename="file://$(find mywaybot_gazebo)/models/stl/scan.stl"  />
         </geometry>
@@ -167,7 +167,7 @@
         <inertia ixx="3.69803461369615E-06" ixy="-2.08164299927343E-21" ixz="-8.07956969382042E-09" iyy="1.21554251693806E-05" iyz="-4.61454702115272E-22" izz="8.47863826312414E-06" />
     </inertial>
     <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="1.57 0 1.57" />
         <geometry>
             <mesh filename="file://$(find mywaybot_gazebo)/models/stl/imu.stl"  />
         </geometry>
@@ -176,7 +176,7 @@
         </material>
     </visual>
     <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="1.57 0 1.57" />
         <geometry>
             <mesh filename="file://$(find mywaybot_gazebo)/models/stl/imu.stl"  />
         </geometry>
@@ -187,8 +187,9 @@
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint" />
         <child link="base_link" />
-        <origin xyz="0 0 0.010" rpy="0 0 3.1416" />
+        <origin xyz="0 0 0.010" rpy="0 0 3.14" />
     </joint>
+
     <joint name="wheel1_joint" type="continuous">
         <origin xyz="-0.056 0.09755 0.0235" rpy="1.5708 0.94526 3.1416" />
         <parent link="base_link" />
@@ -214,13 +215,13 @@
         <axis xyz="0 0 1" />
     </joint>
     <joint name="scan_joint" type="fixed">
-        <origin xyz="-0.04 0 0.056963" rpy="0 0 3.1416" />
+        <origin xyz="-0.04 0 0.086763" rpy="0 0 3.14" />
         <parent link="base_link" />
-        <child link="scan" />
+        <child link="lidar_link" />
         <axis xyz="0 0 0" />
     </joint>
     <joint name="imu_joint" type="fixed">
-        <origin xyz="0.0499999999999996 -0.00999999999999986 0.0622634" rpy="1.5707963267949 0 1.5707963267949" />
+        <origin xyz="0.0499999999999996 -0.00999999999999986 0.0622634" rpy="0 0 3.14" />
         <parent link="base_link" />
         <child link="imu" />
         <axis xyz="0 0 0" />
