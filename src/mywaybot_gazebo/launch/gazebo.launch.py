@@ -15,14 +15,21 @@ def generate_launch_description():
     xacro_file = os.path.join(share_dir, 'urdf', 'mywaybot.xacro')
     robot_description_config = xacro.process_file(xacro_file)
     robot_urdf = robot_description_config.toxml()
+    robot_spawn_position = [0,0,0] # x y z
+    robot_spawn_rotation = [0,0,0] # r p y
 
+    world = os.path.join(
+        get_package_share_directory('aws_robomaker_bookstore_world'),
+        'worlds',
+        'bookstore.world'
+    )
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         name='robot_state_publisher',
         parameters=[
             {'robot_description': robot_urdf}
-        ]
+        ],
     )
 
     joint_state_publisher_node = Node(
@@ -40,7 +47,8 @@ def generate_launch_description():
             ])
         ]),
         launch_arguments={
-            'pause': 'false'
+            'pause': 'false',
+            'world': world
         }.items()
     )
 
@@ -59,7 +67,14 @@ def generate_launch_description():
         executable='spawn_entity.py',
         arguments=[
             '-entity', 'mywaybot',
-            '-topic', 'robot_description'
+            '-topic', 'robot_description',
+            '-x', str(robot_spawn_position[0]),
+            '-y', str(robot_spawn_position[1]),
+            '-z', str(robot_spawn_position[2]),
+            '-R', str(robot_spawn_rotation[0]),
+            '-P', str(robot_spawn_rotation[1]),
+            '-Y', str(robot_spawn_rotation[2]),
+
         ],
         output='screen'
     )
