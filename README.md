@@ -20,9 +20,6 @@
 2. [Hardware Requirements](#hardware-requirements)
 3. [Software Requirements](#software-requirements)
 4. [Usage](#usage)
-5. [Project Structure](#project-structure)
-6. [License](#license)
-7. [Acknowledgments](#acknowledgments)
 
 ---
 
