@@ -16,10 +16,10 @@
 
 ## Table of Contents
 
-1. [Installation](#installation)
-2. [Hardware Requirements](#hardware-requirements)
-3. [Software Requirements](#software-requirements)
-4. [Usage](#usage)
+- [AMR (Autonomous Mobile Robot) Project](#amr-autonomous-mobile-robot-project)
+  - [Overview](#overview)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
 
 ---
 
@@ -49,4 +49,22 @@ Follow these steps to set up the project:
 
 1.  Launch the Gazebo Simulation
 ```bash
-ros2 launch mywaybot_gazebo gazebo.launch
+ros2 launch mywaybot_gazebo gazebo.launch.py
+```
+2.  run to Move robot
+```bash
+ros2 run mywaybot_command omni_teleop_keyboard
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+3.  Launch the mapping (Cartographer)
+```bash
+ros2 launch mywaybot_slam cartographer_launch.py open_rviz:=true use_sim_time:=true
+```
+
+4. Map save
+```bash
+cd your_ws/mywaybot_nav/map
+ros2 run nav2_map_server map_saver_cli -f filename
+```
+
